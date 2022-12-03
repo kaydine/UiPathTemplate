@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="InitiAllSettings" this:InitiAllSettings.in_EnvironmentFlag="DEV" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="InitiAllSettings" this:InitiAllSettings.in_EnvironmentFlag="DEV" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Path to the configuration file that defines settings, constants and assets." Name="in_ConfigFile" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="JSON object to store configuration data of the process (settings, constants and assets)." Name="out_Config" Type="OutArgument(njl:JObject)" />
@@ -7,10 +7,10 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>752,795</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>752,964</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetAllSettings_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="36">
+    <scg:List x:TypeArguments="x:String" Capacity="72">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -47,10 +47,11 @@
       <x:String>System.Reflection</x:String>
       <x:String>UiPath.Platform.ResourceHandling</x:String>
       <x:String>UiPath.Web.Activities</x:String>
+      <x:String>System.Globalization</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="60">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="120">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -110,6 +111,10 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
       <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -118,7 +123,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Initialize, populate and output a configuration to be used throughout the project. &#xA;Settings and constants are read from the local configuration file, and assets are fetched from Orchestrator. &#xA;Asset values overwrite settings and constant values if they are defined with the same name." DisplayName="Sequence: Initialize All Settings" sap:VirtualizedContainerService.HintSize="580,730" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="Initialize, populate and output a configuration to be used throughout the project. &#xA;Settings and constants are read from the local configuration file, and assets are fetched from Orchestrator. &#xA;Asset values overwrite settings and constant values if they are defined with the same name." DisplayName="Sequence: Initialize All Settings" sap:VirtualizedContainerService.HintSize="580,899" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -154,12 +159,8 @@
       </If>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke: LoadJSONFile.xaml (Main config)" sap:VirtualizedContainerService.HintSize="346,126" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Common\LoadJSONFile.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_JsonFilePath">
-            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ConfigFile" />
-          </InArgument>
-          <OutArgument x:TypeArguments="njl:JObject" x:Key="out_JsonObj">
-            <VisualBasicReference x:TypeArguments="njl:JObject" ExpressionText="out_Config" />
-          </OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_JsonFilePath">[in_ConfigFile]</InArgument>
+          <OutArgument x:TypeArguments="njl:JObject" x:Key="out_JsonObj">[out_Config]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -248,9 +249,124 @@
       <InvokeMethod.TargetObject>
         <InArgument x:TypeArguments="njl:JContainer">[out_Config("generalSettings").Parent]</InArgument>
       </InvokeMethod.TargetObject>
-      <InArgument x:TypeArguments="x:Object">
-        <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="new JProperty(&quot;environmentFlag&quot;,in_EnvironmentFlag)" />
-      </InArgument>
+      <InArgument x:TypeArguments="x:Object">[new JProperty("environmentFlag",in_EnvironmentFlag)]</InArgument>
     </InvokeMethod>
+    <Sequence sap2010:Annotation.AnnotationText="Create backup folder and delete old ones" DisplayName="Sequence: Backup folder" sap:VirtualizedContainerService.HintSize="518,129" sap2010:WorkflowViewState.IdRef="Sequence_19">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If Condition="[Directory.Exists(Directory.GetParent(out_Config(&quot;generalSettings&quot;)(&quot;bkFolderPath&quot;).ToString).FullName)]" DisplayName="If: Delete old backup if backup folder exists" sap:VirtualizedContainerService.HintSize="400,65" sap2010:WorkflowViewState.IdRef="If_9">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="Sequence: Delete old backup" sap:VirtualizedContainerService.HintSize="400,98" sap2010:WorkflowViewState.IdRef="Sequence_17">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="s:DateTime" sap2010:Annotation.AnnotationText="Delete backup files before this date" Name="dateDeleteBefore" />
+              <Variable x:TypeArguments="scg:List(x:String)" sap2010:Annotation.AnnotationText="List of old backup folders" Name="oldBkFolders" />
+              <Variable x:TypeArguments="s:DateTime" sap2010:Annotation.AnnotationText="Temporary holder for date parse result" Name="parseResTemp" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Assign: Delete before date" sap:VirtualizedContainerService.HintSize="338,77" sap2010:WorkflowViewState.IdRef="Assign_29">
+              <Assign.To>
+                <OutArgument x:TypeArguments="s:DateTime">[dateDeleteBefore]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="s:DateTime" xml:space="preserve">[Date.ParseExact(Date.Today.AddDays(CInt(out_Config("generalSettings")("bkDays")) * -1).ToString(out_Config("generalSettings")("bkFolderDateFmt").ToString), 
+out_Config("generalSettings")("bkFolderDateFmt").ToString, 
+Nothing)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap2010:Annotation.AnnotationText="Get backup folders older than days specified in config" DisplayName="Assign: Old backup files" sap:VirtualizedContainerService.HintSize="338,127" sap2010:WorkflowViewState.IdRef="Assign_30">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(x:String)">[oldBkFolders]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(x:String)" xml:space="preserve">[Directory.GetDirectories(Directory.GetParent(out_Config("generalSettings")("bkFolderPath").ToString).FullName, String.Format(New DirectoryInfo(out_Config("generalSettings")("bkFolderPath").ToString).Name, "*")).Where(
+		Function(x) Date.TryParseExact(x.Substring(x.Length - out_Config("generalSettings")("bkFolderDateFmt").ToString.Length, out_Config("generalSettings")("bkFolderDateFmt").ToString.Length), out_Config("generalSettings")("bkFolderDateFmt").ToString, Nothing, System.Globalization.DateTimeStyles.None, parseResTemp)
+).Where(
+Function(x) Date.Compare(
+		dateDeleteBefore,
+		Date.ParseExact(x.Substring(x.Length - out_Config("generalSettings")("bkFolderDateFmt").ToString.Length, out_Config("generalSettings")("bkFolderDateFmt").ToString.Length), out_Config("generalSettings")("bkFolderDateFmt").ToString, Nothing)
+	) &gt; 0
+	).ToList]</InArgument>
+              </Assign.Value>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Assign>
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each: Delete old backup file" sap:VirtualizedContainerService.HintSize="338,65" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[oldBkFolders]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="x:String">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:String" Name="oldBkFolder" />
+                  </ActivityAction.Argument>
+                  <ui:Delete ContinueOnError="{x:Null}" ResourceFile="{x:Null}" DisplayName="Delete: Old backup" sap:VirtualizedContainerService.HintSize="334,150" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[oldBkFolder]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:Delete>
+                </ActivityAction>
+              </ui:ForEach.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ForEach>
+          </Sequence>
+        </If.Then>
+      </If>
+      <Sequence DisplayName="Sequence: Create current date backup folder" sap:VirtualizedContainerService.HintSize="400,98" sap2010:WorkflowViewState.IdRef="Sequence_18">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Assign DisplayName="Assign: Current backup folder" sap:VirtualizedContainerService.HintSize="338,73" sap2010:WorkflowViewState.IdRef="Assign_31">
+          <Assign.To>
+            <OutArgument x:TypeArguments="njl:JToken">[out_Config("generalSettings")("bkFolderPath")]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="njl:JToken">[String.Format(out_Config("generalSettings")("bkFolderPath").ToString, DateTime.Now.ToString(out_Config("generalSettings")("bkFolderDateFmt").ToString))]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <If Condition="[Not Directory.Exists(out_Config(&quot;generalSettings&quot;)(&quot;bkFolderPath&quot;).ToString)]" DisplayName="If: Create backup folder if not yet exists" sap:VirtualizedContainerService.HintSize="338,65" sap2010:WorkflowViewState.IdRef="If_10">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder: Current date backup folder" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[out_Config(&quot;generalSettings&quot;)(&quot;bkFolderPath&quot;).ToString]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CreateDirectory>
+          </If.Then>
+        </If>
+      </Sequence>
+    </Sequence>
   </Sequence>
 </Activity>
