@@ -1,12 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="TakeScreenshot" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:si="clr-namespace:System.IO;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="TakeScreenshot" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Path to the folder where the screenshot should be saved." Name="in_Folder" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Optional argument that specifies the path and the name of the screenshot to be taken." Name="io_FilePath" Type="InOutArgument(x:String)" />
   </x:Members>
-  <mva:VisualBasic.Settings>
+  <VisualBasic.Settings>
     <x:Null />
-  </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>546,1177.33333333333</sap:VirtualizedContainerService.HintSize>
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>735,1381</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>TakeScreenshot_2</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -31,6 +31,8 @@
       <x:String>UiPath.Core</x:String>
       <x:String>System.Windows.Markup</x:String>
       <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -54,22 +56,30 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Capture a screenshot, log its name and location and save it with the PNG extension.&#xA;If no specific filepath is passed as argument, it saves the image in the folder specified by in_Folder." DisplayName="Take and Save Screenshot" sap:VirtualizedContainerService.HintSize="526,1117.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
+      <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence sap2010:Annotation.AnnotationText="Capture a screenshot, log its name and location and save it with the PNG extension.&#xA;If no specific filepath is passed as argument, it saves the image in the folder specified by in_Folder." DisplayName="Sequence: Take and Save Screenshot" sap:VirtualizedContainerService.HintSize="478,1316" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="ui:Image" Name="Screenshot" />
-      <Variable x:TypeArguments="si:FileInfo" Name="ScreenshotFileInfo" />
+      <Variable x:TypeArguments="ui:Image" Name="screenshot" />
+      <Variable x:TypeArguments="si:FileInfo" Name="screenshotFileInfo" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:TakeScreenshot WaitBefore="{x:Null}" sap2010:Annotation.AnnotationText="The whole screen is captured." DisplayName="Take screenshot" sap:VirtualizedContainerService.HintSize="484,96.6666666666667" sap2010:WorkflowViewState.IdRef="TakeScreenshot_1" Screenshot="[Screenshot]">
+    <ui:TakeScreenshot WaitBefore="{x:Null}" sap2010:Annotation.AnnotationText="The whole screen is captured." DisplayName="Take screenshot: Whole screen" sap:VirtualizedContainerService.HintSize="416,115" sap2010:WorkflowViewState.IdRef="TakeScreenshot_1" Screenshot="[screenshot]">
       <ui:TakeScreenshot.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" WaitForReady="INTERACTIVE">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="fc4ae21b-0e88-4f43-8bdb-e05b36fccf59" WaitForReady="INTERACTIVE">
           <ui:Target.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
           </ui:Target.TimeoutMS>
@@ -81,9 +91,9 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:TakeScreenshot>
-    <If Condition="[String.IsNullOrEmpty(io_FilePath)]" DisplayName="If no screenshot filepath" sap:VirtualizedContainerService.HintSize="484,216" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[String.IsNullOrEmpty(io_FilePath)]" DisplayName="If: no screenshot filepath" sap:VirtualizedContainerService.HintSize="416,65" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
-        <Assign DisplayName="Initialize screenshot filepath" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_5">
+        <Assign DisplayName="Assign: Initialize screenshot filepath" sap:VirtualizedContainerService.HintSize="264,73" sap2010:WorkflowViewState.IdRef="Assign_5">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[io_FilePath]</OutArgument>
           </Assign.To>
@@ -93,15 +103,15 @@
         </Assign>
       </If.Then>
     </If>
-    <Assign DisplayName="Initialize ScreenshotFileInfo" sap:VirtualizedContainerService.HintSize="464,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+    <Assign DisplayName="Assign: Initialize ScreenshotFileInfo" sap:VirtualizedContainerService.HintSize="416,73" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
-        <OutArgument x:TypeArguments="si:FileInfo">[ScreenshotFileInfo]</OutArgument>
+        <OutArgument x:TypeArguments="si:FileInfo">[screenshotFileInfo]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="si:FileInfo">[New FileInfo(io_FilePath)]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[Not Directory.Exists(ScreenshotFileInfo.DirectoryName)]" DisplayName="If screenshot folder does not exist, create it" sap:VirtualizedContainerService.HintSize="464,208" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[Not Directory.Exists(screenshotFileInfo.DirectoryName)]" DisplayName="If: screenshot folder does not exist, create it" sap:VirtualizedContainerService.HintSize="416,375" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -109,10 +119,10 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create directory" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[ScreenshotFileInfo.DirectoryName]" />
+        <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create directory: Screenshot folder" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[screenshotFileInfo.DirectoryName]" />
       </If.Then>
     </If>
-    <ui:SaveImage DisplayName="Save screenshot" FileName="[io_FilePath]" sap:VirtualizedContainerService.HintSize="464,92" sap2010:WorkflowViewState.IdRef="SaveImage_2" Image="[Screenshot]" />
-    <ui:LogMessage DisplayName="Log message (Take screenshot)" sap:VirtualizedContainerService.HintSize="464,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Screenshot saved at: &quot;+io_FilePath]" />
+    <ui:SaveImage DisplayName="Save Image: screenshot" FileName="[io_FilePath]" sap:VirtualizedContainerService.HintSize="416,150" sap2010:WorkflowViewState.IdRef="SaveImage_2" Image="[screenshot]" />
+    <ui:LogMessage DisplayName="Log message: Take screenshot" sap:VirtualizedContainerService.HintSize="416,128" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Screenshot saved at: &quot;+io_FilePath]" />
   </Sequence>
 </Activity>
