@@ -425,7 +425,7 @@
                   <av:Size x:Key="ShapeSize">200,224</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap2010:Annotation.AnnotationText="If a system exception occurs during the process, the transaction item's status is updated as Failed (Exception Type: Application)." DisplayName="Sequence: System Exception" sap:VirtualizedContainerService.HintSize="400,1345" sap2010:WorkflowViewState.IdRef="Sequence_17">
+              <Sequence sap2010:Annotation.AnnotationText="If a system exception occurs during the process, the transaction item's status is updated as Failed (Exception Type: Application)." DisplayName="Sequence: System Exception" sap:VirtualizedContainerService.HintSize="400,1655" sap2010:WorkflowViewState.IdRef="Sequence_17">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Boolean" Name="queueRetry" />
                   <Variable x:TypeArguments="x:String" Name="screenshotPath" />
@@ -455,11 +455,21 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <TryCatch.Try>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke: TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="200,65" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke: TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,126" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Common\TakeScreenshot.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_Folder">[in_Config("generalSettings")("exSSFolderPath").ToString]</InArgument>
-                        <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">[screenshotPath]</InOutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_Folder">
+                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;generalSettings&quot;)(&quot;exSSFolderPath&quot;).ToString" />
+                        </InArgument>
+                        <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">
+                          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="screenshotPath" />
+                        </InOutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_ScreenSelector" />
                       </ui:InvokeWorkflowFile.Arguments>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
                     </ui:InvokeWorkflowFile>
                   </TryCatch.Try>
                   <TryCatch.Catches>
