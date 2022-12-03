@@ -1,0 +1,38 @@
+{
+
+  "generalSettings": {
+    "processID":"[ProcessID]",
+    "processID_Desc":"Business process ID",
+    
+    "processName":"[ProcessName]",
+    "processName_Desc":"Business process name",
+    
+    "queueName":"[ProcessID]_[ProcessName]",
+    "queueName_Desc":"Orchestrator queue Name. The value must match with the queue name defined on Orchestrator.",
+    
+    "queueFolder":"",
+    "queueFolder_Desc":"Folder name. The value must match a folder defined in Orchestrator and queue specified as OrchestratorQueueName should be created in this folder. For classic folders leave the value field empty.",
+    
+    "maxRetryNumber":"2",
+    "maxRetryNumber_Desc":"Must be 0 if working with Orchestrator queues. If > 0, the robot will retry the same transaction which failed with a system exception. Must be an integer value.",
+    
+    "maxConsecutiveSystemExceptions":"2",
+    "maxConsecutiveSystemExceptions_Desc":"The number of consecutive system exceptions allowed. If MaxConsecutiveSystemExceptions is reached, the job is stopped. To disable this feature, set the value to 0. ",
+    
+    "exSSFolderPath":"C:\\Temp\\[ProcessID]_[ProcessName]\\Result\\ExceptionScreenshot",
+    "exSSFolderPath_Desc":"Folder to store exception screenshots",
+
+    "retryNumberOrchestratorActivities":"2",
+    "retryNumberOrchestratorActivities_Desc":"The number of times Orchestrator activities (e.g. Get Transaction Item, Set Transaction Status, Get Asset, etc.) is retried in case of an exception. Must be an integer >= 1.",
+
+    "shouldMarkJobAsFaulted":"FALSE",
+    "shouldMarkJobAsFaulted_Desc":"Must be TRUE or FALSE. If the value is TRUE and an error occurs in Initialization state or the maxConsecutiveSystemExceptions is reached, the job is marked as Faulted."
+    
+  },
+  
+  "assets":{
+
+  },
+  "assets_Desc":"Assets to be retrieved from Orchestrator."
+
+}
