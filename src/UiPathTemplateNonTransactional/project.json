@@ -1,5 +1,5 @@
 {
-  "name": "UiPathTemplateSimple",
+  "name": "UiPathTemplateNonTransactional",
   "description": "UiPath project template based on Robotic Enterprise Framework for simple non-transactional process.",
   "main": "Main.xaml",
   "dependencies": {
