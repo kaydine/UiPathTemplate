@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>752,799</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>975,799</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -219,18 +219,10 @@
                 <TryCatch.Try>
                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke: SetProcessStatus (Success)" sap:VirtualizedContainerService.HintSize="334,126" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="Framework\SetProcessStatus.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">
-                        <VisualBasicValue x:TypeArguments="ui:BusinessRuleException" ExpressionText="Nothing" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">
-                        <VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="Nothing" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">
-                        <VisualBasicValue x:TypeArguments="njl:JObject" ExpressionText="config" />
-                      </InArgument>
-                      <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ConsecutiveSystemExceptions">
-                        <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="consecutiveSystemExceptions" />
-                      </InOutArgument>
+                      <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">[Nothing]</InArgument>
+                      <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">[Nothing]</InArgument>
+                      <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">[config]</InArgument>
+                      <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ConsecutiveSystemExceptions">[consecutiveSystemExceptions]</InOutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
                 </TryCatch.Try>
@@ -290,18 +282,10 @@
                     <TryCatch.Try>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke: SetProcessStatus (BRE)" sap:VirtualizedContainerService.HintSize="334,126" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="Framework\SetProcessStatus.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">
-                            <VisualBasicValue x:TypeArguments="ui:BusinessRuleException" ExpressionText="businessException" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">
-                            <VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="Nothing" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">
-                            <VisualBasicValue x:TypeArguments="njl:JObject" ExpressionText="config" />
-                          </InArgument>
-                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ConsecutiveSystemExceptions">
-                            <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="consecutiveSystemExceptions" />
-                          </InOutArgument>
+                          <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">[businessException]</InArgument>
+                          <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">[Nothing]</InArgument>
+                          <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">[config]</InArgument>
+                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ConsecutiveSystemExceptions">[consecutiveSystemExceptions]</InOutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                     </TryCatch.Try>
@@ -360,18 +344,10 @@
                     <TryCatch.Try>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke: SetProcessStatus (SE)" sap:VirtualizedContainerService.HintSize="334,126" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="Framework\SetProcessStatus.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">
-                            <VisualBasicValue x:TypeArguments="ui:BusinessRuleException" ExpressionText="Nothing" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">
-                            <VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="systemException" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">
-                            <VisualBasicValue x:TypeArguments="njl:JObject" ExpressionText="config" />
-                          </InArgument>
-                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ConsecutiveSystemExceptions">
-                            <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="consecutiveSystemExceptions" />
-                          </InOutArgument>
+                          <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">[Nothing]</InArgument>
+                          <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">[systemException]</InArgument>
+                          <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">[config]</InArgument>
+                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ConsecutiveSystemExceptions">[consecutiveSystemExceptions]</InOutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                     </TryCatch.Try>
@@ -525,7 +501,7 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <If.Then>
-                          <Throw DisplayName="Throw: Consecutive Exceptions exceeded" Exception="[new Exception(&quot;The maximum number of consecutive system exceptions was reached. Consecutive retry number: &quot; + (consecutiveSystemExceptions+1).ToString)]" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                          <Throw DisplayName="Throw: Consecutive Exceptions exceeded" Exception="[new Exception(&quot;The maximum number of consecutive system exceptions was reached. Consecutive retry number: &quot; + (consecutiveSystemExceptions).ToString)]" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="Throw_1" />
                         </If.Then>
                       </If>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke: InitiAllApplications workflow" sap:VirtualizedContainerService.HintSize="482,126" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\InitAllApplications.xaml">
