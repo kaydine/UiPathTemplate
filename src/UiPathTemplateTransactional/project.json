@@ -1,7 +1,7 @@
 {
   "name": "UiPathTemplateTransactional",
   "description": "UiPath project template based on Robotic Enterprise Framework for transactional process.",
-  "main": "Performer_Main.xaml",
+  "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.16.0]",
     "UiPath.System.Activities": "[22.10.3]",
@@ -90,8 +90,8 @@
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
     {
-      "filePath": "Performer_Main.xaml",
-      "uniqueId": "b8364525-c202-4553-b9a8-db295272b8e0",
+      "filePath": "Main.xaml",
+      "uniqueId": "17f49f48-4312-4f0e-8d3e-d69cd7ec1dd1",
       "input": [],
       "output": []
     }
