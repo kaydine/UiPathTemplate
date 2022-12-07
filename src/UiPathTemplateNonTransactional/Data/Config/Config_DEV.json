@@ -11,7 +11,10 @@
     "queueName_Desc":"Orchestrator queue Name. The value must match with the queue name defined on Orchestrator.",
     
     "queueFolder":"",
-    "queueFolder_Desc":"Folder name. The value must match a folder defined in Orchestrator and queue specified as OrchestratorQueueName should be created in this folder. For classic folders leave the value field empty.",
+    "queueFolder_Desc":"Folder name where the queue set in [queueName] is registered. For classic folders leave the value field empty.",
+    
+    "assetFolder":"",
+    "assetFolder_Desc":"Folder name where the assets set in [assets] are registered. For classic folders leave the value field empty.",
     
     "maxConsecutiveSystemExceptions":"2",
     "maxConsecutiveSystemExceptions_Desc":"The number of consecutive system exceptions allowed. If MaxConsecutiveSystemExceptions is reached, the job is stopped. To disable this feature, set the value to 0. ",
@@ -45,6 +48,6 @@
   "assets":{
 
   },
-  "assets_Desc":"Assets to be retrieved from Orchestrator."
+  "assets_Desc":"Assets to be retrieved from Orchestrator. Set the Asset Name in key and leave the value blank."
 
 }
