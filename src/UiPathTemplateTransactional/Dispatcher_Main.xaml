@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>862,799</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>957,799</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -133,7 +133,7 @@
     </sap:WorkflowViewStateService.ViewState>
     <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="Main process. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the process can be automatically retried." DisplayName="State: Process" sap:VirtualizedContainerService.HintSize="231,244" sap2010:WorkflowViewState.IdRef="State_3">
       <State.Entry>
-        <TryCatch DisplayName="Try Catch: Try to process" sap:VirtualizedContainerService.HintSize="438,381" sap2010:WorkflowViewState.IdRef="TryCatch_9">
+        <TryCatch DisplayName="Try Catch: Try to process" sap:VirtualizedContainerService.HintSize="438,348" sap2010:WorkflowViewState.IdRef="TryCatch_9">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -141,7 +141,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <TryCatch.Try>
-            <Sequence DisplayName="Sequence: Process" sap:VirtualizedContainerService.HintSize="462,574" sap2010:WorkflowViewState.IdRef="Sequence_28">
+            <Sequence DisplayName="Sequence: Process" sap:VirtualizedContainerService.HintSize="400,98" sap2010:WorkflowViewState.IdRef="Sequence_28">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -184,7 +184,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </Assign>
-                <If Condition="[Directory.Exists(config(&quot;generalSettings&quot;)(&quot;workFolderPath&quot;).ToString)]" DisplayName="If: Delete work folder if exists" sap:VirtualizedContainerService.HintSize="338,65" sap2010:WorkflowViewState.IdRef="If_16">
+                <If Condition="[Directory.Exists(config(&quot;generalSettings&quot;)(&quot;workFolderPath&quot;).ToString)]" DisplayName="If: Delete work folder if exists (before process)" sap:VirtualizedContainerService.HintSize="334,375" sap2010:WorkflowViewState.IdRef="If_16">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -192,7 +192,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <ui:DeleteFolderX DisplayName="Delete Folder: Work folder" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="[config(&quot;generalSettings&quot;)(&quot;workFolderPath&quot;).ToString]" Recursive="True" />
+                    <ui:DeleteFolderX DisplayName="Delete Folder: Work folder (before process)" sap:VirtualizedContainerService.HintSize="200,65" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="[config(&quot;generalSettings&quot;)(&quot;workFolderPath&quot;).ToString]" Recursive="True" />
                   </If.Then>
                 </If>
                 <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder: Work folder" sap:VirtualizedContainerService.HintSize="338,65" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[config(&quot;generalSettings&quot;)(&quot;workFolderPath&quot;).ToString]">
@@ -373,15 +373,15 @@
             </Catch>
           </TryCatch.Catches>
           <TryCatch.Finally>
-            <If Condition="[Directory.Exists(config(&quot;generalSettings&quot;)(&quot;workFolderPath&quot;).ToString)]" DisplayName="If: Delete work folder if exists" sap:VirtualizedContainerService.HintSize="416,375" sap2010:WorkflowViewState.IdRef="If_17">
+            <If Condition="[Directory.Exists(config(&quot;generalSettings&quot;)(&quot;workFolderPath&quot;).ToString)]" DisplayName="If: Delete work folder if exists (after process)" sap:VirtualizedContainerService.HintSize="334,375" sap2010:WorkflowViewState.IdRef="If_17">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <ui:DeleteFolderX DisplayName="Delete Folder: Work folder" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="DeleteFolderX_2" Path="[config(&quot;generalSettings&quot;)(&quot;workFolderPath&quot;).ToString]" Recursive="True" />
+                <ui:DeleteFolderX DisplayName="Delete Folder: Work folder (after process)" sap:VirtualizedContainerService.HintSize="200,65" sap2010:WorkflowViewState.IdRef="DeleteFolderX_2" Path="[config(&quot;generalSettings&quot;)(&quot;workFolderPath&quot;).ToString]" Recursive="True" />
               </If.Then>
             </If>
           </TryCatch.Finally>
@@ -564,13 +564,13 @@
                   <Transition.To>
                     <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="State: End Process" sap:VirtualizedContainerService.HintSize="144,160" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
                       <State.Entry>
-                        <Sequence sap:VirtualizedContainerService.HintSize="502,1878" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                        <Sequence DisplayName="Sequence: End Process" sap:VirtualizedContainerService.HintSize="400,466" sap2010:WorkflowViewState.IdRef="Sequence_32">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <TryCatch DisplayName="Try Catch: Try to close all aplications" sap:VirtualizedContainerService.HintSize="440,951" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                          <TryCatch DisplayName="Try Catch: Try to close all aplications" sap:VirtualizedContainerService.HintSize="338,65" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -613,21 +613,12 @@
                               </Catch>
                             </TryCatch.Catches>
                           </TryCatch>
-                          <TryCatch DisplayName="Try Catch: Other clean-up process" sap:VirtualizedContainerService.HintSize="440,591" sap2010:WorkflowViewState.IdRef="TryCatch_13">
-                            <TryCatch.Try>
-                              <Sequence DisplayName="Sequence: Try other clean-up process" sap:VirtualizedContainerService.HintSize="400,117" sap2010:WorkflowViewState.IdRef="Sequence_33">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                              </Sequence>
-                            </TryCatch.Try>
+                          <TryCatch DisplayName="Try Catch: Other clean-up process" sap:VirtualizedContainerService.HintSize="438,597" sap2010:WorkflowViewState.IdRef="TryCatch_13">
                             <TryCatch.Catches>
-                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,138" sap2010:WorkflowViewState.IdRef="Catch`1_14">
+                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,201" sap2010:WorkflowViewState.IdRef="Catch`1_14">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
@@ -635,7 +626,7 @@
                                   <ActivityAction.Argument>
                                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                   </ActivityAction.Argument>
-                                  <ui:LogMessage DisplayName="Log Message: Other clean-up process failed" sap:VirtualizedContainerService.HintSize="320,65" sap2010:WorkflowViewState.IdRef="LogMessage_38" Level="Error" Message="[&quot;End Process other clean-up process failed. &quot; + exception.Message]">
+                                  <ui:LogMessage DisplayName="Log Message: Other clean-up process failed" sap:VirtualizedContainerService.HintSize="334,128" sap2010:WorkflowViewState.IdRef="LogMessage_38" Level="Error" Message="[&quot;End Process other clean-up process failed. &quot; + exception.Message]">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -647,7 +638,7 @@
                               </Catch>
                             </TryCatch.Catches>
                           </TryCatch>
-                          <If sap2010:Annotation.AnnotationText="Mark job as faulted if there is system exception depending on config" Condition="[systemException IsNot Nothing AndAlso (config Is Nothing OrElse Convert.ToBoolean(config(&quot;generalSettings&quot;)(&quot;shouldMarkJobAsFaulted&quot;)))]" DisplayName="If: SystemException IsNot Nothing (Handle shouldMarkJobAsFaulted)" sap:VirtualizedContainerService.HintSize="440,134" sap2010:WorkflowViewState.IdRef="If_18">
+                          <If sap2010:Annotation.AnnotationText="Mark job as faulted if there is system exception depending on config" Condition="[systemException IsNot Nothing AndAlso (config Is Nothing OrElse Convert.ToBoolean(config(&quot;generalSettings&quot;)(&quot;shouldMarkJobAsFaulted&quot;)))]" DisplayName="If: SystemException IsNot Nothing (Handle shouldMarkJobAsFaulted)" sap:VirtualizedContainerService.HintSize="338,134" sap2010:WorkflowViewState.IdRef="If_18">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -672,7 +663,7 @@
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <av:Point x:Key="ShapeLocation">18,238</av:Point>
                           <av:Size x:Key="ShapeSize">144,160</av:Size>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
                           <x:Double x:Key="StateContainerWidth">110</x:Double>
                           <x:Double x:Key="StateContainerHeight">26</x:Double>
                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>

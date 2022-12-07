@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>975,1326</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1247,1326</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SetTransactionStatus_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="52">
@@ -145,16 +145,7 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence sap2010:Annotation.AnnotationText="Includes custom log fields to the log message.&#xA;They are removed after logging to prevent duplicated status messages about a single transaction." DisplayName="Sequence: Log Success with additional logging fields" sap:VirtualizedContainerService.HintSize="400,256" sap2010:WorkflowViewState.IdRef="Sequence_10">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message: Success" sap:VirtualizedContainerService.HintSize="338,65" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Process Successful.&quot;]" />
-            </Sequence>
+            <ui:LogMessage DisplayName="Log Message: Success" sap:VirtualizedContainerService.HintSize="338,65" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Process Successful.&quot;]" />
           </Sequence>
           <FlowStep.Next>
             <FlowStep x:Name="__ReferenceID0">
@@ -216,16 +207,7 @@
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Sequence sap2010:Annotation.AnnotationText="Includes custom log fields to the log message.&#xA;They are removed after logging to prevent duplicated status messages about a single transaction." DisplayName="Sequence: Log business exception with additional logging fields" sap:VirtualizedContainerService.HintSize="423,319" sap2010:WorkflowViewState.IdRef="Sequence_13">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message: Business Exception" sap:VirtualizedContainerService.HintSize="361,128" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Error" Message="[&quot;Business rule exception. &quot; + in_BusinessException.Message]" />
-                </Sequence>
+                <ui:LogMessage DisplayName="Log Message: Business Exception" sap:VirtualizedContainerService.HintSize="338,65" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Error" Message="[&quot;Business rule exception. &quot; + in_BusinessException.Message]" />
               </Sequence>
               <FlowStep.Next>
                 <x:Reference>__ReferenceID0</x:Reference>
@@ -242,7 +224,6 @@
               </sap:WorkflowViewStateService.ViewState>
               <Sequence sap2010:Annotation.AnnotationText="If a system exception occurs during the process, the transaction item's status is updated as Failed (Exception Type: Application)." DisplayName="Sequence: System Exception" sap:VirtualizedContainerService.HintSize="200,224" sap2010:WorkflowViewState.IdRef="Sequence_17">
                 <Sequence.Variables>
-                  <Variable x:TypeArguments="x:Boolean" Name="queueRetry" />
                   <Variable x:TypeArguments="x:String" Name="screenshotPath" />
                 </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
