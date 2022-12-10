@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1247,799</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1115,799</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -133,7 +133,7 @@
     </sap:WorkflowViewStateService.ViewState>
     <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="Main process. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the process can be automatically retried." DisplayName="State: Process" sap:VirtualizedContainerService.HintSize="231,244" sap2010:WorkflowViewState.IdRef="State_3">
       <State.Entry>
-        <TryCatch DisplayName="Try Catch: Try to process" sap:VirtualizedContainerService.HintSize="438,658" sap2010:WorkflowViewState.IdRef="TryCatch_9">
+        <TryCatch DisplayName="Try Catch: Try to process" sap:VirtualizedContainerService.HintSize="540,4601" sap2010:WorkflowViewState.IdRef="TryCatch_9">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -141,13 +141,13 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <TryCatch.Try>
-            <Sequence DisplayName="Sequence: Process" sap:VirtualizedContainerService.HintSize="400,98" sap2010:WorkflowViewState.IdRef="Sequence_28">
+            <Sequence DisplayName="Sequence: Process" sap:VirtualizedContainerService.HintSize="500,2007" sap2010:WorkflowViewState.IdRef="Sequence_28">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign DisplayName="Assign: BusinessException" sap:VirtualizedContainerService.HintSize="400,73" sap2010:WorkflowViewState.IdRef="Assign_25">
+              <Assign DisplayName="Assign: BusinessException" sap:VirtualizedContainerService.HintSize="438,73" sap2010:WorkflowViewState.IdRef="Assign_25">
                 <Assign.To>
                   <OutArgument x:TypeArguments="ui:BusinessRuleException">[businessException]</OutArgument>
                 </Assign.To>
@@ -155,7 +155,7 @@
                   <InArgument x:TypeArguments="ui:BusinessRuleException">[Nothing]</InArgument>
                 </Assign.Value>
               </Assign>
-              <Sequence sap2010:Annotation.AnnotationText="Setup work folder to be used by process" DisplayName="Sequence: Setup work folder" sap:VirtualizedContainerService.HintSize="400,591" sap2010:WorkflowViewState.IdRef="Sequence_31">
+              <Sequence sap2010:Annotation.AnnotationText="Setup work folder to be used by process" DisplayName="Sequence: Setup work folder" sap:VirtualizedContainerService.HintSize="438,964" sap2010:WorkflowViewState.IdRef="Sequence_31">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -163,7 +163,7 @@
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message: Setup work folder" sap:VirtualizedContainerService.HintSize="338,65" sap2010:WorkflowViewState.IdRef="LogMessage_37" Level="Trace" Message="[&quot;Setting up work folder...&quot;]">
+                <ui:LogMessage DisplayName="Log Message: Setup work folder" sap:VirtualizedContainerService.HintSize="338,128" sap2010:WorkflowViewState.IdRef="LogMessage_37" Level="Trace" Message="[&quot;Setting up work folder...&quot;]">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -184,7 +184,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </Assign>
-                <If Condition="[Directory.Exists(config(&quot;generalSettings&quot;)(&quot;workFolderPath&quot;).ToString)]" DisplayName="If: Delete work folder if exists (before process)" sap:VirtualizedContainerService.HintSize="338,65" sap2010:WorkflowViewState.IdRef="If_16">
+                <If Condition="[Directory.Exists(config(&quot;generalSettings&quot;)(&quot;workFolderPath&quot;).ToString)]" DisplayName="If: Delete work folder if exists (before process)" sap:VirtualizedContainerService.HintSize="338,375" sap2010:WorkflowViewState.IdRef="If_16">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -209,7 +209,7 @@
                   <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">[config]</InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
-              <TryCatch DisplayName="Try Catch: Set Process Status (Success)" sap:VirtualizedContainerService.HintSize="400,65" sap2010:WorkflowViewState.IdRef="TryCatch_10">
+              <TryCatch DisplayName="Try Catch: Set Process Status (Success)" sap:VirtualizedContainerService.HintSize="438,663" sap2010:WorkflowViewState.IdRef="TryCatch_10">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -219,10 +219,18 @@
                 <TryCatch.Try>
                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke: SetProcessStatus (Success)" sap:VirtualizedContainerService.HintSize="334,126" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="Framework\SetProcessStatus.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">[Nothing]</InArgument>
-                      <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">[Nothing]</InArgument>
-                      <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">[config]</InArgument>
-                      <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ConsecutiveSystemExceptions">[consecutiveSystemExceptions]</InOutArgument>
+                      <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">
+                        <VisualBasicValue x:TypeArguments="ui:BusinessRuleException" ExpressionText="Nothing" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">
+                        <VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="Nothing" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">
+                        <VisualBasicValue x:TypeArguments="njl:JObject" ExpressionText="config" />
+                      </InArgument>
+                      <InOutArgument x:TypeArguments="x:Int32" x:Key="io_RetryNumber">
+                        <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="retryNumber" />
+                      </InOutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
                 </TryCatch.Try>
@@ -246,7 +254,7 @@
             </Sequence>
           </TryCatch.Try>
           <TryCatch.Catches>
-            <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="404,25" sap2010:WorkflowViewState.IdRef="Catch`1_9">
+            <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="506,971" sap2010:WorkflowViewState.IdRef="Catch`1_9">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -257,7 +265,7 @@
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="Exception" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Sequence: Handle Business Exception" sap:VirtualizedContainerService.HintSize="400,98" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                <Sequence DisplayName="Sequence: Handle Business Exception" sap:VirtualizedContainerService.HintSize="500,898" sap2010:WorkflowViewState.IdRef="Sequence_29">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -282,10 +290,18 @@
                     <TryCatch.Try>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke: SetProcessStatus (BRE)" sap:VirtualizedContainerService.HintSize="334,126" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="Framework\SetProcessStatus.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">[businessException]</InArgument>
-                          <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">[Nothing]</InArgument>
-                          <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">[config]</InArgument>
-                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ConsecutiveSystemExceptions">[consecutiveSystemExceptions]</InOutArgument>
+                          <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">
+                            <VisualBasicValue x:TypeArguments="ui:BusinessRuleException" ExpressionText="businessException" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">
+                            <VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="Nothing" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">
+                            <VisualBasicValue x:TypeArguments="njl:JObject" ExpressionText="config" />
+                          </InArgument>
+                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_RetryNumber">
+                            <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="retryNumber" />
+                          </InOutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                     </TryCatch.Try>
@@ -309,10 +325,10 @@
                 </Sequence>
               </ActivityAction>
             </Catch>
-            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,25" sap2010:WorkflowViewState.IdRef="Catch`1_10">
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="506,971" sap2010:WorkflowViewState.IdRef="Catch`1_10">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -320,7 +336,7 @@
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Sequence: Handle System Exception" sap:VirtualizedContainerService.HintSize="400,98" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                <Sequence DisplayName="Sequence: Handle System Exception" sap:VirtualizedContainerService.HintSize="500,898" sap2010:WorkflowViewState.IdRef="Sequence_30">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -344,10 +360,18 @@
                     <TryCatch.Try>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke: SetProcessStatus (SE)" sap:VirtualizedContainerService.HintSize="334,126" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="Framework\SetProcessStatus.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">[Nothing]</InArgument>
-                          <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">[systemException]</InArgument>
-                          <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">[config]</InArgument>
-                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ConsecutiveSystemExceptions">[consecutiveSystemExceptions]</InOutArgument>
+                          <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">
+                            <VisualBasicValue x:TypeArguments="ui:BusinessRuleException" ExpressionText="Nothing" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">
+                            <VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="systemException" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="njl:JObject" x:Key="in_Config">
+                            <VisualBasicValue x:TypeArguments="njl:JObject" ExpressionText="config" />
+                          </InArgument>
+                          <InOutArgument x:TypeArguments="x:Int32" x:Key="io_RetryNumber">
+                            <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="retryNumber" />
+                          </InOutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                     </TryCatch.Try>
@@ -355,7 +379,7 @@
                       <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,201" sap2010:WorkflowViewState.IdRef="Catch`1_13">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
@@ -411,7 +435,7 @@
           <Transition.To>
             <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="State: Initialization" sap:VirtualizedContainerService.HintSize="254,140" sap2010:WorkflowViewState.IdRef="State_2">
               <State.Entry>
-                <TryCatch DisplayName="Try Catch: Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="582,2737" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                <TryCatch DisplayName="Try Catch: Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="582,2699" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -419,7 +443,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <TryCatch.Try>
-                    <Sequence DisplayName="Sequence: Load configurations and open applications" sap:VirtualizedContainerService.HintSize="544,2167" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <Sequence DisplayName="Sequence: Load configurations and open applications" sap:VirtualizedContainerService.HintSize="544,2129" sap2010:WorkflowViewState.IdRef="Sequence_4">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -492,7 +516,7 @@
                           </Sequence>
                         </If.Then>
                       </If>
-                      <If sap2010:Annotation.AnnotationText="If MaxConsecutiveSystemExceptions number was reached, throw Exception at initialization and go to End Process state, thus finalizing the execution. &#xA;If MaxConsecutiveSystemExceptions is 0, then any number of consecutive System Exceptions is allowed." Condition="[Cint(config(&quot;generalSettings&quot;)(&quot;maxConsecutiveSystemExceptions&quot;))&gt;0 AndAlso consecutiveSystemExceptions&gt;=Cint(config(&quot;generalSettings&quot;)(&quot;maxConsecutiveSystemExceptions&quot;))]" DisplayName="If: maxConsecutiveSystemExceptions exceeded" sap:VirtualizedContainerService.HintSize="482,483" sap2010:WorkflowViewState.IdRef="If_13">
+                      <If sap2010:Annotation.AnnotationText="If maxRetryNumber number was reached, throw Exception at initialization and go to End Process state, thus finalizing the execution. " Condition="[retryNumber&gt;=Cint(config(&quot;generalSettings&quot;)(&quot;maxRetryNumber&quot;))]" DisplayName="If: maxRetryNumber exceeded" sap:VirtualizedContainerService.HintSize="482,445" sap2010:WorkflowViewState.IdRef="If_13">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -501,7 +525,7 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <If.Then>
-                          <Throw DisplayName="Throw: Consecutive Exceptions exceeded" Exception="[new Exception(&quot;The maximum number of consecutive system exceptions was reached. Consecutive retry number: &quot; + (consecutiveSystemExceptions).ToString)]" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                          <Throw DisplayName="Throw: Max Retry number exceeded" Exception="[new Exception(&quot;The maximum number of retries was reached. Retry number: &quot; + (retryNumber).ToString)]" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="Throw_1" />
                         </If.Then>
                       </If>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke: InitiAllApplications workflow" sap:VirtualizedContainerService.HintSize="482,126" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\InitAllApplications.xaml">
@@ -736,7 +760,7 @@
       <Variable x:TypeArguments="s:Exception" sap2010:Annotation.AnnotationText="Used during transitions between states to represent exceptions other than business exceptions." Name="systemException" />
       <Variable x:TypeArguments="ui:BusinessRuleException" sap2010:Annotation.AnnotationText="Used during transitions between states and represents a situation that does not conform to the rules of the process being automated." Name="businessException" />
       <Variable x:TypeArguments="njl:JObject" sap2010:Annotation.AnnotationText="JSON object to store configuration data of the process (settings, constants and assets)." Name="config" />
-      <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Used to control the number of consecutive system exceptions." Default="0" Name="consecutiveSystemExceptions" />
+      <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Used to control the number of attempts of retrying the process in case of system exceptions." Default="0" Name="retryNumber" />
     </StateMachine.Variables>
   </StateMachine>
 </Activity>

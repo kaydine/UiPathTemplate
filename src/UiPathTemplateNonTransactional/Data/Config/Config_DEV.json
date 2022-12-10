@@ -16,8 +16,8 @@
     "assetFolder":"",
     "assetFolder_Desc":"Folder name where the assets set in [assets] are registered. For classic folders leave the value field empty.",
     
-    "maxConsecutiveSystemExceptions":"2",
-    "maxConsecutiveSystemExceptions_Desc":"The number of consecutive system exceptions allowed. If MaxConsecutiveSystemExceptions is reached, the job is stopped. To disable this feature, set the value to 0. ",
+    "maxRetryNumber":"2",
+    "maxRetryNumber_Desc":"The robot will retry the process if failed with a system exception. Must be an integer value.",
     
     "exSSFolderPath":"C:\\Temp\\[ProcessID]_[ProcessName]\\Result\\ExceptionScreenshot",
     "exSSFolderPath_Desc":"Folder to store exception screenshots",
